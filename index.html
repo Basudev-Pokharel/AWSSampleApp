@@ -22,16 +22,15 @@
         color: #fff;
         text-align: center;
         overflow: hidden;
-        background-color: #000;
-        background-color: #c9f9fc;
+        background-color: #c9f3fc;
       }
 
       .container {
         max-width: 800px;
         padding: 40px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(40, 40, 40, 0.144);
         border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        box-shadow: 10px 10px 10px rgb(5, 125, 125);
         backdrop-filter: blur(10px);
         animation: fadeIn 2s ease;
       }
@@ -39,16 +38,14 @@
       h1 {
         font-size: 3.5rem;
         margin-bottom: 20px;
-        background: linear-gradient(90deg, #ffdd00, #ff6f61);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: glow 3s infinite alternate;
+        color: black;
       }
 
       h2 {
         font-size: 1.5rem;
         font-weight: 400;
         margin-bottom: 30px;
+        color: black;
       }
 
       .btn {
@@ -58,8 +55,9 @@
         font-weight: bold;
         border-radius: 50px;
         text-decoration: none;
-        background: linear-gradient(90deg, #ff6f61, #ffdd00);
-        color: #000;
+        background: linear-gradient(90deg, #1294ea, #160bec);
+        color: #ffffff;
+        text-shadow: #000000 1px 1px 1px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
@@ -145,105 +143,6 @@
       <h2>This application is running on <b>AWS CodePipeline + EC2</b></h2>
       <a href="#" class="btn">Explore More</a>
     </div>
-    <script>
-      (() => {
-        const dot = document.getElementById("gold-cursor-dot");
-        const ring = document.getElementById("gold-cursor-ring");
-        if (!dot || !ring) return;
-
-        let x = window.innerWidth / 2,
-          y = window.innerHeight / 2; // target
-        let rx = x,
-          ry = y; // ring pos (smoothed)
-        const ease = 0.16; // follow smoothness
-
-        let visible = false;
-        let rafId;
-
-        const show = () => {
-          if (!visible) {
-            visible = true;
-            dot.style.opacity = "1";
-            ring.style.opacity = "1";
-          }
-        };
-
-        const hide = () => {
-          visible = false;
-          dot.style.opacity = "0";
-          ring.style.opacity = "0";
-        };
-
-        const onMove = (e) => {
-          x = e.clientX;
-          y = e.clientY;
-          show();
-          if (!rafId) raf();
-        };
-
-        const raf = () => {
-          rx += (x - rx) * ease;
-          ry += (y - ry) * ease;
-
-          // dot snaps to cursor; ring trails smoothly
-          dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
-          ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-
-          rafId = requestAnimationFrame(raf);
-        };
-
-        // Click feedback
-        const onDown = () => {
-          dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(0.9)`;
-          ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%) scale(0.85)`;
-        };
-        const onUp = () => {
-          dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(1)`;
-          ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%) scale(1)`;
-        };
-
-        // Hover amplification for interactive elements
-        const isInteractive = (el) => {
-          if (!el) return false;
-          const tag = el.tagName?.toLowerCase();
-          return (
-            el.closest('a, button, [role="button"], input, textarea, select') ||
-            tag === "a" ||
-            tag === "button" ||
-            ["input", "textarea", "select"].includes(tag)
-          );
-        };
-
-        document.addEventListener("mousemove", onMove, { passive: true });
-        document.addEventListener("mouseenter", show);
-        document.addEventListener("mouseleave", hide);
-        document.addEventListener("mousedown", onDown);
-        document.addEventListener("mouseup", onUp);
-
-        // Subtle grow/shimmer when hovering interactive elements
-        document.addEventListener(
-          "mousemove",
-          (e) => {
-            const hover = isInteractive(e.target);
-            ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%) scale(${
-              hover ? 1.35 : 1
-            })`;
-            ring.style.borderColor = hover
-              ? "rgba(255, 240, 150, 0.95)"
-              : "rgba(255, 215, 0, 0.9)";
-          },
-          { passive: true }
-        );
-
-        // Auto-hide if idle
-        let idleTimer;
-        const bump = () => {
-          clearTimeout(idleTimer);
-          show();
-          idleTimer = setTimeout(hide, 1800);
-        };
-        document.addEventListener("mousemove", bump, { passive: true });
-      })();
-    </script>
   </body>
+  <script src="script.js"></script>
 </html>
