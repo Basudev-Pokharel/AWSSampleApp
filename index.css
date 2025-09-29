@@ -1,7 +1,5 @@
-html {
-  cursor: cell;
-}
 /* Hide default cursor on desktop */
+/* Hide default cursor completely */
 @media (pointer: fine) {
   html,
   body,
@@ -9,7 +7,7 @@ html {
   button,
   input,
   textarea {
-    cursor: none;
+    cursor: none !important;
   }
 }
 
@@ -22,7 +20,7 @@ html {
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 999999;
-  opacity: 0; /* fade in when mouse moves */
+  opacity: 0;
   will-change: transform;
 }
 
