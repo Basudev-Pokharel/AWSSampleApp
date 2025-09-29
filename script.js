@@ -81,8 +81,8 @@
         hover ? 1.35 : 1
       })`;
       ring.style.borderColor = hover
-        ? "rgba(255, 240, 150, 0.95)"
-        : "rgba(255, 215, 0, 0.9)";
+        ? "rgba(74, 193, 100, 0.95)"
+        : "rgba(16, 77, 35, 0.9)";
     },
     { passive: true }
   );
