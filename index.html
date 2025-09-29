@@ -1,36 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Sample Deployment</title>
+    <meta charset="UTF-8" />
+    <title>🚀 AWS Deployment Success</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
-        color: #333;
-        background-color: goldenrod;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
+        height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .container {
+        max-width: 800px;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        animation: fadeIn 2s ease;
       }
 
       h1 {
-        font-size: 500%;
-        font-weight: normal;
-        margin-bottom: 0;
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        background: linear-gradient(90deg, #ffdd00, #ff6f61);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: glow 3s infinite alternate;
       }
 
       h2 {
-        font-size: 200%;
-        font-weight: normal;
-        margin-bottom: 0;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 28px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 50px;
+        text-decoration: none;
+        background: linear-gradient(90deg, #ff6f61, #ffdd00);
+        color: #000;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 223, 0, 0.8);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 10px #ffdd00, 0 0 20px #ff6f61, 0 0 30px #ffdd00;
+        }
+        to {
+          text-shadow: 0 0 20px #ff6f61, 0 0 30px #ffdd00, 0 0 40px #ff6f61;
+        }
+      }
+
+      /* Floating particles background */
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        animation: float 8s infinite ease-in-out;
+      }
+
+      .circle:nth-child(1) {
+        width: 120px;
+        height: 120px;
+        top: 10%;
+        left: 15%;
+        animation-duration: 12s;
+      }
+      .circle:nth-child(2) {
+        width: 80px;
+        height: 80px;
+        bottom: 20%;
+        right: 20%;
+        animation-duration: 10s;
+      }
+      .circle:nth-child(3) {
+        width: 60px;
+        height: 60px;
+        top: 30%;
+        right: 10%;
+        animation-duration: 14s;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-30px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
       }
     </style>
   </head>
   <body>
-    <div align="center">
-      <h1>Congratulations</h1>
-      <h2>
-        This application was deployed using AWS CodeDeploy, this is from Otto
-        asd.
-      </h2>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <div class="container">
+      <h1>🎉 Deployment Successful</h1>
+      <h2>This application is running on <b>AWS CodePipeline + EC2</b></h2>
+      <a href="#" class="btn">Explore More</a>
     </div>
   </body>
 </html>
