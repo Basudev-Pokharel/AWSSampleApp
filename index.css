@@ -1,0 +1,79 @@
+html {
+  cursor: cell;
+}
+/* Hide default cursor on desktop */
+@media (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea {
+    cursor: none;
+  }
+}
+
+/* Base cursor parts */
+#gold-cursor-dot,
+#gold-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  opacity: 0; /* fade in when mouse moves */
+  will-change: transform;
+}
+
+/* Inner golden orb */
+#gold-cursor-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff8c6,
+    #ffd700 60%,
+    #b8860b 100%
+  );
+  box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.85),
+    0 0 24px 6px rgba(218, 165, 32, 0.35) inset;
+  transition: transform 120ms ease, opacity 150ms ease;
+}
+
+/* Outer glow ring */
+#gold-cursor-ring {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 215, 0, 0.9);
+  box-shadow: 0 0 22px rgba(255, 215, 0, 0.65);
+  transition: transform 160ms ease, opacity 150ms ease, border-color 160ms ease;
+  backdrop-filter: blur(0.5px);
+}
+
+/* Hover feedback over interactive elements */
+a:hover ~ #gold-cursor-ring,
+button:hover ~ #gold-cursor-ring,
+[role="button"]:hover ~ #gold-cursor-ring,
+input:hover ~ #gold-cursor-ring,
+textarea:hover ~ #gold-cursor-ring,
+select:hover ~ #gold-cursor-ring {
+}
+
+/* Fallback: show system cursor on touch devices */
+@media (pointer: coarse) {
+  #gold-cursor-dot,
+  #gold-cursor-ring {
+    display: none;
+  }
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea {
+    cursor: auto;
+  }
+}
